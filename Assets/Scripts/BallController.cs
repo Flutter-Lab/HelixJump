@@ -8,8 +8,9 @@ public class BallController : MonoBehaviour
     private Rigidbody rb;
     [SerializeField]
     private float impulseForce = 5f;
-
     private Vector3 startPos;
+    public int perfectPass = 0;
+    public bool isSuperSpeedActive;
 
    
     void Awake()
@@ -18,11 +19,15 @@ public class BallController : MonoBehaviour
         startPos = transform.position;
     }
 
+	private void Update()
+	{
+		if(perfectPass >= 3 && !isSuperSpeedActive)
+		{
+            isSuperSpeedActive = true;
+            rb.AddForce(Vector3.down * 10f, ForceMode.Impulse);
+		}
+	}
 
-    void Update()
-    {
-        
-    }
 
 
 	private void OnCollisionEnter(Collision target)
@@ -30,10 +35,23 @@ public class BallController : MonoBehaviour
         if (ignoreNextCollision)
             return;
 
-        //Adding ResetLevel functionality via Deathpart - initialized when deathpart is hit;
-        DeathPart deathPart = target.transform.GetComponent<DeathPart>();
-        if (deathPart)
-            deathPart.HitDeathPart();
+		if (isSuperSpeedActive)
+		{
+			if (!target.transform.GetComponent<Goal>())
+			{
+                Destroy(target.transform.parent.gameObject);
+                Debug.Log("Destroying Platform");
+			}
+			else
+			{
+                //Adding ResetLevel functionality via Deathpart - initialized when deathpart is hit;
+                DeathPart deathPart = target.transform.GetComponent<DeathPart>();
+                if (deathPart)
+                    deathPart.HitDeathPart();
+            }
+		}
+
+        
 
         
         //Debug.Log("Ball touched something");
@@ -43,6 +61,9 @@ public class BallController : MonoBehaviour
 
         ignoreNextCollision = true;
         Invoke("AllowCollision", .2f);
+
+        perfectPass = 0;
+        isSuperSpeedActive = false;
 
 	}
 
