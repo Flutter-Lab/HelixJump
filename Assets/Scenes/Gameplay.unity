@@ -955,14 +955,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 665692478}
     m_Modifications:
-    - target: {fileID: 2294818877027989540, guid: eff2bd37649fc0a4183b6a3c6e7450fd, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2294818877301912954, guid: eff2bd37649fc0a4183b6a3c6e7450fd, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2295948691372903944, guid: eff2bd37649fc0a4183b6a3c6e7450fd, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1010,6 +1002,10 @@ PrefabInstance:
     - target: {fileID: 2295948691372903945, guid: eff2bd37649fc0a4183b6a3c6e7450fd, type: 3}
       propertyPath: m_Name
       value: HelixTop
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295948691372903945, guid: eff2bd37649fc0a4183b6a3c6e7450fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eff2bd37649fc0a4183b6a3c6e7450fd, type: 3}

@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     
     public void NextLevel()
 	{
+        currentStage++;
+        FindObjectOfType<BallController>().ResetBall();
+        FindObjectOfType<HelixController>().LoadStage(currentStage);
         Debug.Log("Next Level called");
 	}
 
@@ -38,6 +41,7 @@ public class GameManager : MonoBehaviour
         //Show Ads
         singleton.score = 0;
         FindObjectOfType<BallController>().ResetBall();
+        FindObjectOfType<HelixController>().LoadStage(currentStage);
         // Reload Stage
 	}
 

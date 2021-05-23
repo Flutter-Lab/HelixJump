@@ -100,7 +100,27 @@ public class HelixController : MonoBehaviour
 				}
 			}
 
+            List<GameObject> leftParts = new List<GameObject>();
+
+            foreach(Transform t in level.transform)
+			{
+                t.GetComponent<Renderer>().material.color = allStage[stageNumber].stageLevelPartColor;
+                if (t.gameObject.activeInHierarchy)
+                    leftParts.Add(t.gameObject);
+			}
+
             // Creating the deathparts
-		}
-	}
+            List<GameObject> deathParts = new List<GameObject>();
+
+            while(deathParts.Count < stage.levels[i].deathPartCount)
+			{
+                GameObject randomPart = leftParts[(Random.Range(0, leftParts.Count))];
+				if (!deathParts.Contains(randomPart))
+				{
+                    randomPart.gameObject.AddComponent<DeathPart>();
+                    deathParts.Add(randomPart);
+				}
+			}
+        }
+    }
 }
