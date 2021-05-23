@@ -9,9 +9,13 @@ public class BallController : MonoBehaviour
     [SerializeField]
     private float impulseForce = 5f;
 
-    void Start()
+    private Vector3 startPos;
+
+   
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        startPos = transform.position;
     }
 
 
@@ -47,5 +51,11 @@ public class BallController : MonoBehaviour
     private void AllowCollision()
 	{
         ignoreNextCollision = false;
+	}
+
+
+    public void ResetBall()
+	{
+        transform.position = startPos;
 	}
 }

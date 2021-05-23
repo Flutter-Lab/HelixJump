@@ -35,6 +35,10 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
 	{
         Debug.Log("Game over");
+        //Show Ads
+        singleton.score = 0;
+        FindObjectOfType<BallController>().ResetBall();
+        // Reload Stage
 	}
 
     public void AddScore(int scoreToAdd)
