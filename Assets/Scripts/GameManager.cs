@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        Advertisement.Initialize("4140741");
+        
+        
+
         if (singleton == null)
             singleton = this;
         else if (singleton != this)
@@ -39,6 +44,10 @@ public class GameManager : MonoBehaviour
 	{
         Debug.Log("Game over");
         //Show Ads
+        // 4140741
+        Advertisement.Show();
+
+
         singleton.score = 0;
         FindObjectOfType<BallController>().ResetBall();
         FindObjectOfType<HelixController>().LoadStage(currentStage);

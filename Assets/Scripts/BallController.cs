@@ -42,18 +42,18 @@ public class BallController : MonoBehaviour
                 Destroy(target.transform.parent.gameObject);
                 Debug.Log("Destroying Platform");
 			}
-			else
-			{
-                //Adding ResetLevel functionality via Deathpart - initialized when deathpart is hit;
-                DeathPart deathPart = target.transform.GetComponent<DeathPart>();
-                if (deathPart)
-                    deathPart.HitDeathPart();
-            }
 		}
+        else
+        {
+            //Adding ResetLevel functionality via Deathpart - initialized when deathpart is hit;
+            DeathPart deathPart = target.transform.GetComponent<DeathPart>();
+            if (deathPart)
+                deathPart.HitDeathPart();
+        }
 
-        
 
-        
+
+
         //Debug.Log("Ball touched something");
 
         rb.velocity = Vector3.zero;
