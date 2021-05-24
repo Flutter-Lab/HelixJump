@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
         Advertisement.Show();
 
 
+
+
         singleton.score = 0;
         FindObjectOfType<BallController>().ResetBall();
         FindObjectOfType<HelixController>().LoadStage(currentStage);
@@ -65,4 +67,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("HighScore", score);
 		}
 	}
+
+
+
 }

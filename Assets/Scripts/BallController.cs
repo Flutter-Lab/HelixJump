@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class BallController : MonoBehaviour
 {
@@ -12,11 +13,15 @@ public class BallController : MonoBehaviour
     public int perfectPass = 0;
     public bool isSuperSpeedActive;
 
+    public AudioClip ballDrop;
+
    
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         startPos = transform.position;
+        GetComponent<AudioSource>().clip = ballDrop;
+        GetComponent<AudioSource>().playOnAwake = false;
     }
 
 	private void Update()
@@ -50,6 +55,8 @@ public class BallController : MonoBehaviour
             if (deathPart)
                 deathPart.HitDeathPart();
         }
+
+        GetComponent<AudioSource>().Play();
 
 
 
